@@ -2,7 +2,6 @@ package ru.job4j.tracker;
 
 
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 public class StartUI {
     public static void main(String[] args) {
