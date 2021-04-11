@@ -5,7 +5,7 @@ public class Library {
         Book howStartNewLife = new Book("How to start a new life on Monday and not quit on Tuesday", 272);
         Book howStartThink = new Book("How to start thinking on Monday and not stop on Tuesday", 330);
         Book thinkSlowlyDecideQuickly = new Book("Think slowly... decide quickly", 710);
-        Book cleanCode = new Book("Clean Code: A Handbook of Agile Software Craftsmanship", 464);
+        Book cleanCode = new Book("Clean Code", 464);
         Book[] books = new Book[4];
         books[0] = howStartNewLife;
         books[1] = howStartThink;
@@ -26,7 +26,7 @@ public class Library {
         System.out.println("Show books where written: Clean Code");
         for (int index = 0; index < books.length; index++) {
             Book bk = books[index];
-            if (bk.getName().contains("Clean Code")) {
+            if ("Clean Code".equals(bk.getName())) {
                 System.out.println(bk.getName() + ". This book have " + bk.getPages() + " pages.");
             }
         }
