@@ -9,8 +9,7 @@ public class StartUI {
         tracker.add(sofa);
         Item test = tracker.findById(2);
         System.out.println("Name: " + test.getName() + ", ID: " + test.getId());
-        System.out.println("\n-----------------------\n");
-        System.out.println(chair.toString());
-        System.out.println(sofa.toString());
+        System.out.println(chair);
+        System.out.println(sofa);
     }
 }
