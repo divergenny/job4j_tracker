@@ -9,6 +9,10 @@ public class College {
         denis.setGroup("304C");
         denis.setDateOfReceipt("10.04.2021");
 
-        System.out.println(denis.getSurname() + " " + denis.getName() + " " + denis.getPatronymic() + " is studying in group: " + denis.getGroup() + " and date of receipt is: " + denis.getDateOfReceipt() + ".");
+        System.out.println(denis.getSurname() + " "
+                + denis.getName() + " "
+                + denis.getPatronymic() + " is studying in group: "
+                + denis.getGroup() + " and date of receipt is: "
+                + denis.getDateOfReceipt() + ".");
     }
 }
