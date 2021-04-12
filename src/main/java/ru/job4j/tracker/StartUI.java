@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class StartUI {
@@ -21,9 +20,11 @@ public class StartUI {
                 showItems(item);
             } else if (select == 2) {
                 System.out.println("=== Edit item ====");
-                System.out.print("Which Item would you want to Edit? \nYour choice: ");
+                System.out.print("Which Item would you want to Edit?"
+                                    + System.lineSeparator() + "Your choice: ");
                 int input = Integer.parseInt(scanner.nextLine());
-                System.out.print("What is new value for Item? \nNew value: ");
+                System.out.print("What is new value for Item?"
+                                    + System.lineSeparator() + "New value: ");
                 String newValue = scanner.nextLine();
                 Item replaceItem = new Item(newValue);
                 if (tracker.replace(input, replaceItem)) {
@@ -33,7 +34,8 @@ public class StartUI {
                 }
             } else if (select == 3) {
                 System.out.println("=== Delete item ====");
-                System.out.print("Which item do you want to delete? \nWrite ID of item: ");
+                System.out.print("Which item do you want to delete?"
+                                    + System.lineSeparator() + "Write ID of item: ");
                 int itemToDelete = Integer.parseInt(scanner.nextLine());
                 if (tracker.delete(itemToDelete)) {
                     System.out.println("Successfully deleted!");
@@ -42,24 +44,25 @@ public class StartUI {
                 }
             } else if (select == 4) {
                 System.out.println("=== Find item by Id ====");
-                System.out.print("Which item do you want to find? \nWrite ID of item: ");
+                System.out.print("Which item do you want to find?"
+                                    + System.lineSeparator() + "Write ID of item: ");
                 int id = Integer.parseInt(scanner.nextLine());
                 Item item = tracker.findById(id);
                 if (null == item) {
-                    System.out.println("The application with this id was not found");
+                    System.out.println("The item with this id was not found");
                 } else {
                     System.out.println(item);
                 }
             } else if (select == 5) {
                 System.out.println("=== Find items by name ====");
-                System.out.print("What is name of application do you want to find? "
-                        + "\nWrite name of application: ");
+                System.out.print("What is name of item do you want to find? "
+                        + System.lineSeparator() + "Write name of item: ");
                 String applicationName = scanner.nextLine();
                 Item[] foundItems = tracker.findByName(applicationName);
                 if (foundItems.length > 0) {
                     showItems(foundItems);
                 } else {
-                    System.out.println("Applications with this name were not found");
+                    System.out.println("Item with this name were not found");
                 }
 
             } else if (select == 6) {
@@ -87,10 +90,6 @@ public class StartUI {
         for (int index = 0; index < items.length; index++) {
             System.out.println(items[index]);
         }
-    }
-
-    public void cls() throws IOException, InterruptedException {
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 
     public static void main(String[] args) {
