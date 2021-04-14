@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class StartUITest {
 
-    @Test
+    /*@Test
     public void whenCreateItem() {
         String[] answers = {"Chair"};
         Input input = new StubInput(answers);
@@ -45,5 +45,5 @@ public class StartUITest {
         StartUI.deleteItem(new StubInput(answers), tracker);
         Item deleted = tracker.findById(chairTest.getId());
         assertNull(deleted);
-    }
+    }*/
 }
