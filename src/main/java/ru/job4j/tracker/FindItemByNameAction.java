@@ -19,16 +19,12 @@ public class FindItemByNameAction implements UserAction {
                 + System.lineSeparator() + "Write name of item: ");
         Item[] foundItems = tracker.findByName(applicationName);
         if (foundItems.length > 0) {
-            showItems(foundItems);
+            for (int index = 0; index < foundItems.length; index++) {
+                out.println(foundItems[index]);
+            }
         } else {
             out.println("Item with this name were not found");
         }
         return true;
-    }
-
-    private static void showItems(Item[] items) {
-        for (int index = 0; index < items.length; index++) {
-            System.out.println(items[index]);
-        }
     }
 }
