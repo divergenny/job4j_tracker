@@ -10,10 +10,10 @@ public class StartUITest {
     @Test
     public void whenCreateItem() {
         Output out = new StubOutput();
+        Tracker tracker = new Tracker();
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
-        Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateItemAction(out),
                 new ExitAction(out)
@@ -58,10 +58,10 @@ public class StartUITest {
     @Test
     public void whenExit() {
         Output out = new StubOutput();
+        Tracker tracker = new Tracker();
         Input in = new StubInput(
                 new String[] {"0"}
         );
-        Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new ExitAction(out)
         };
@@ -76,12 +76,12 @@ public class StartUITest {
     @Test
     public void whenFindAllAction() {
         Output out = new StubOutput();
-        Input in = new StubInput(
-                new String[] {"0", "1"}
-        );
         Tracker tracker = new Tracker();
         Item sofa = new Item("Sofa");
         tracker.add(sofa);
+        Input in = new StubInput(
+                new String[] {"0", "1"}
+        );
         UserAction[] actions = {
                 new ShowAllItemsAction(out),
                 new ExitAction(out)
@@ -91,7 +91,7 @@ public class StartUITest {
                 + "0. Show all items" + System.lineSeparator()
                 + "1. Exit" + System.lineSeparator()
                 + "=== Show all items ====" + System.lineSeparator()
-                + "Item{id=1, name='Sofa', created=" + sofa.getTime() + "}" + System.lineSeparator()
+                + sofa + System.lineSeparator()
                 + "Menu." + System.lineSeparator()
                 + "0. Show all items" + System.lineSeparator()
                 + "1. Exit" + System.lineSeparator()
@@ -102,12 +102,12 @@ public class StartUITest {
     @Test
     public void whenFindItemByNameAction() {
         Output out = new StubOutput();
-        Input in = new StubInput(
-                new String[] {"0", "Sofa", "1"}
-        );
         Tracker tracker = new Tracker();
         Item sofa = new Item("Sofa");
         tracker.add(sofa);
+        Input in = new StubInput(
+                new String[] {"0", sofa.getName(), "1"}
+        );
         UserAction[] actions = {
                 new FindItemByNameAction(out),
                 new ExitAction(out)
@@ -117,7 +117,7 @@ public class StartUITest {
                 + "0. Find items by name" + System.lineSeparator()
                 + "1. Exit" + System.lineSeparator()
                 + "=== Find items by name ====" + System.lineSeparator()
-                + "Item{id=1, name='Sofa', created=" + sofa.getTime() + "}" + System.lineSeparator()
+                + sofa + System.lineSeparator()
                 + "Menu." + System.lineSeparator()
                 + "0. Find items by name" + System.lineSeparator()
                 + "1. Exit" + System.lineSeparator()
@@ -128,12 +128,12 @@ public class StartUITest {
     @Test
     public void whenFindItemByIdAction() {
         Output out = new StubOutput();
-        Input in = new StubInput(
-                new String[] {"0", "1", "1"}
-        );
         Tracker tracker = new Tracker();
         Item sofa = new Item("Sofa");
         tracker.add(sofa);
+        Input in = new StubInput(
+                new String[] {"0", String.valueOf(sofa.getId()), "1"}
+        );
         UserAction[] actions = {
                 new FindItemByIdAction(out),
                 new ExitAction(out)
@@ -143,7 +143,7 @@ public class StartUITest {
                 + "0. Find item by id" + System.lineSeparator()
                 + "1. Exit" + System.lineSeparator()
                 + "=== Find item by Id ====" + System.lineSeparator()
-                + "Item{id=1, name='Sofa', created=" + sofa.getTime() + "}" + System.lineSeparator()
+                + sofa + System.lineSeparator()
                 + "Menu." + System.lineSeparator()
                 + "0. Find item by id" + System.lineSeparator()
                 + "1. Exit" + System.lineSeparator()
