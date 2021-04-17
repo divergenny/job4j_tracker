@@ -13,14 +13,4 @@ public class FindEl {
         }
         return rsl;
     }
-
-    public static void main(String[] args) {
-        String[] values = {"Hello", "World", "I", "will", "be", "the", "best", "Programmer"};
-        try {
-            int result = indexOf(values, "World");
-            System.out.println(result);
-        } catch (ElementNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 }
