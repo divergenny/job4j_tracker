@@ -3,6 +3,9 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
@@ -52,17 +55,16 @@ public class ValidateInputTest {
         Input in = new StubInput(
                 new String[] {"-1", "1"}
         );
-        UserAction[] actions = new UserAction[]{
-                new CreateItemAction(out),
-                new ExitAction(out)
-        };
+        List<UserAction> actions = new ArrayList<UserAction>();
+        actions.add(new CreateItemAction(out));
+        actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator()
                         + "0. Add new Item" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
                         + "Wrong input, you can select: 0 .. "
-                        + (actions.length - 1) + System.lineSeparator()
+                        + (actions.size() - 1) + System.lineSeparator()
                         + "Menu." + System.lineSeparator()
                         + "0. Add new Item" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
