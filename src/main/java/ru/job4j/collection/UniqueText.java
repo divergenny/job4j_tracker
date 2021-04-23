@@ -11,14 +11,11 @@ public class UniqueText {
         for (String textOrigin : origin) {
             check.add(textOrigin);
         }
-        int count = 0;
         for (String textDuplicate : text) {
-            if (check.contains(textDuplicate)) {
-                count++;
+            rsl = check.contains(textDuplicate);
+            if (!rsl) {
+                break;
             }
-        }
-        if (count > Math.ceil((origin.length - 1) * 0.8)) {
-            rsl = true;
         }
         return rsl;
     }
