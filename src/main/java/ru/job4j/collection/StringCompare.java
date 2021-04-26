@@ -17,7 +17,7 @@ public class StringCompare implements Comparator<String> {
                 break;
             }
         }
-        if (leftLength != rightLength && flagEqual) {
+        if (flagEqual && leftLength != rightLength) {
             return leftLength < rightLength ? -1 : 1;
         }
         return result;
