@@ -27,10 +27,6 @@ public class Account {
         this.balance = balance;
     }
 
-    public void addBalance(double amount) {
-        balance += amount;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
