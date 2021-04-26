@@ -15,8 +15,9 @@ public class BankService {
     public void addAccount(String passport, Account account) {
         User foundUser = findByPassport(passport);
         if (foundUser != null) {
-            if (!users.get(foundUser).contains(account)) {
-                users.get(foundUser).add(account);
+            List<Account> userAccounts = users.get(foundUser);
+            if (!userAccounts.contains(account)) {
+                userAccounts.add(account);
             }
         }
     }
@@ -49,19 +50,15 @@ public class BankService {
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
-        User srcUser = findByPassport(srcPassport);
-        User destUser = findByPassport(destPassport);
-        if (srcUser != null && destUser != null) {
-            int srcNumReq = users.get(srcUser).indexOf(new Account(srcRequisite, -1));
-            int destNumReq = users.get(srcUser).indexOf(new Account(destRequisite, -1));
-            if (srcNumReq != -1 && destNumReq != -1) {
-                double srcMoney = users.get(srcUser).get(srcNumReq).getBalance();
-                if (srcMoney - amount >= 0) {
-                    users.get(srcUser).get(destNumReq).addBalance(amount);
-                    srcMoney = srcMoney - amount;
-                    users.get(srcUser).get(srcNumReq).setBalance(srcMoney);
-                    rsl = true;
-                }
+        Account srcAccount = findByRequisite(srcPassport, srcRequisite);
+        Account destAccount = findByRequisite(destPassport, destRequisite);
+        if (srcAccount != null && destAccount != null) {
+            double srcMoney = srcAccount.getBalance();
+            if (srcMoney - amount >= 0) {
+                destAccount.addBalance(amount);
+                srcMoney = srcMoney - amount;
+                srcAccount.setBalance(srcMoney);
+                rsl = true;
             }
         }
         return rsl;
