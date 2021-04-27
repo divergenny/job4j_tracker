@@ -21,7 +21,7 @@ public class LexSort implements Comparator<String> {
                 break;
             }
         }
-        if (flagEqual) {
+        if (flagEqual && leftValuesLength != rightValuesLength) {
             return leftValuesLength > rightValuesLength ? 1 : -1;
         }
         return result;
