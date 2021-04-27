@@ -1,7 +1,7 @@
 # используем язык java. Travis CI поддерживает другие языки тоже.
 language: java
 jdk:
-  - openjdk14
+  - openjdk16
 
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
@@ -15,11 +15,11 @@ after_success:
 notifications:
   email:
     recipients:
-      -divergenny@gmail.com
+      - divergenny@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
 
-# Ключ от https://codecov.io/
 env:
   global:
     - CODECOV_TOKEN="0152b59b-96cc-461b-9915-0c71309dbc01"
+
