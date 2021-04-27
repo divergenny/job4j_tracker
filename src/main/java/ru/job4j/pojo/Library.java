@@ -2,8 +2,10 @@ package ru.job4j.pojo;
 
 public class Library {
     public static void main(String[] args) {
-        Book howStartNewLife = new Book("How to start a new life on Monday and not quit on Tuesday", 272);
-        Book howStartThink = new Book("How to start thinking on Monday and not stop on Tuesday", 330);
+        Book howStartNewLife = new Book("How to start a new life"
+                + " on Monday and not quit on Tuesday", 272);
+        Book howStartThink = new Book("How to start thinking"
+                + " on Monday and not stop on Tuesday", 330);
         Book thinkSlowlyDecideQuickly = new Book("Think slowly... decide quickly", 710);
         Book cleanCode = new Book("Clean Code", 464);
         Book[] books = new Book[4];

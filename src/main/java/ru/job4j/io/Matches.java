@@ -13,7 +13,8 @@ public class Matches {
             System.out.println(player + " введите число от 1 до 3:");
             int matches = Integer.parseInt(input.nextLine());
             if (matches > 3 || matches < 1) {
-                System.out.println("Вы ввели число больше трёх или меньше одного, попробуйте снова.");
+                System.out.println("Вы ввели число больше трёх"
+                        + "или меньше одного, попробуйте снова.");
             } else {
                 turn = !turn;
                 count = count - matches;

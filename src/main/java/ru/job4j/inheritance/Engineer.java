@@ -1,9 +1,10 @@
 package ru.job4j.inheritance;
 
 public class Engineer extends Profession {
-    private int numberProjects = 0;
+    private int numberProjects;
 
-    public Engineer(String name, String surname, String education, String birthday, int numberProjects) {
+    public Engineer(String name, String surname,
+                    String education, String birthday, int numberProjects) {
         super(name, surname, education, birthday);
         this.numberProjects = numberProjects;
     }

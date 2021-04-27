@@ -1,9 +1,10 @@
 package ru.job4j.inheritance;
 
 public class Doctor extends Profession {
-    private long curedPatients = 0;
+    private long curedPatients;
 
-    public Doctor(String name, String surname, String education, String birthday, long curedPatients) {
+    public Doctor(String name, String surname,
+                  String education, String birthday, long curedPatients) {
         super(name, surname, education, birthday);
         this.curedPatients = curedPatients;
     }
