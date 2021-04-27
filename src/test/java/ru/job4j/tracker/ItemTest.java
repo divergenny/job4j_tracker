@@ -38,7 +38,39 @@ public class ItemTest {
                 new Item(2, "Best"),
                 new Item(1, "Certificate")
         );
-        Collections.sort(items, Collections.reverseOrder());
+        items.sort(Collections.reverseOrder());
+        assertThat(items, is(expected));
+    }
+
+    @Test
+    public void whenSortItemsByName() {
+        List<Item> items = Arrays.asList(
+                new Item(1, "Certificate"),
+                new Item(2, "Best"),
+                new Item(3, "Absolutely")
+        );
+        List<Item> expected = Arrays.asList(
+                new Item(3, "Absolutely"),
+                new Item(2, "Best"),
+                new Item(1, "Certificate")
+        );
+        items.sort(new SortByNameItem());
+        assertThat(items, is(expected));
+    }
+
+    @Test
+    public void whenReverseSortItemsByName() {
+        List<Item> items = Arrays.asList(
+                new Item(3, "Absolutely"),
+                new Item(1, "Certificate"),
+                new Item(2, "Best")
+        );
+        List<Item> expected = Arrays.asList(
+                new Item(1, "Certificate"),
+                new Item(2, "Best"),
+                new Item(3, "Absolutely")
+        );
+        items.sort(Collections.reverseOrder(new SortByNameItem()));
         assertThat(items, is(expected));
     }
 }
