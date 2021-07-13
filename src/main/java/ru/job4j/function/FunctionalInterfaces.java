@@ -22,7 +22,7 @@ public class FunctionalInterfaces {
         }
         Supplier<List<String>> sup = () -> new ArrayList<String>(map.values());
         Consumer<String> con = s -> System.out.println(s);
-        Function<String, String> func = s -> s.toUpperCase(Locale.ROOT);
+        Function<String, String> func = s -> s.toUpperCase();
         for (String s : sup.get()) {
             con.accept(func.apply(s));
         }
