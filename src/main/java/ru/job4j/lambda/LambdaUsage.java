@@ -8,7 +8,7 @@ public class LambdaUsage {
         String[] testValues = {"image 1", "image 2", "image 33"};
         Comparator<String> cmpDescSize = (left, right) -> {
             System.out.println("compare - " + right.length() + ":" + left.length());
-            return right.length() - left.length();
+            return Integer.compare(right.length(), left.length());
         };
         Arrays.sort(testValues, cmpDescSize);
         for (String val : testValues) {

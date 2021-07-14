@@ -15,12 +15,13 @@ public class FI {
         Comparator<Attachment> comparator = new Comparator<Attachment>() {
             @Override
             public int compare(Attachment left, Attachment right) {
-                return left.getSize() - right.getSize();
+                return Integer.compare(left.getSize(), right.getSize());
             }
         };
         Arrays.sort(atts, comparator);
         Comparator<String> cmpText = (left, right) -> left.compareTo(right);
-        Comparator<String> cmpDescSize = (left, right) -> right.length() - left.length();
+        Comparator<String> cmpDescSize = (left, right) ->
+                Integer.compare(right.length(), left.length());
         Arrays.sort(testValues, cmpText);
         for (String val : testValues) {
             System.out.println(val);
