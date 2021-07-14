@@ -1,10 +1,7 @@
 package ru.job4j.search;
 
-import org.junit.Ignore;
 import org.junit.Test;
-
 import java.util.ArrayList;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
