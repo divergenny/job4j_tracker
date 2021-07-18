@@ -52,7 +52,9 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return home == address.home && apartment == address.apartment && Objects.equals(city, address.city) && Objects.equals(street, address.street);
+        return home == address.home && apartment == address.apartment
+                && Objects.equals(city, address.city)
+                && Objects.equals(street, address.street);
     }
 
     @Override
@@ -62,11 +64,11 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", home=" + home +
-                ", apartment=" + apartment +
-                '}';
+        return "Address{"
+                + "city='" + city + '\''
+                + ", street='" + street + '\''
+                + ", home=" + home
+                + ", apartment=" + apartment
+                + '}';
     }
 }
