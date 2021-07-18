@@ -4,7 +4,9 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
 public class SchoolTest {
@@ -61,5 +63,23 @@ public class SchoolTest {
         expected.add(new Student(30, "Surname3"));
         expected.add(new Student(40, "Surname4"));
         assertThat(rsl, is(expected));
+    }
+
+    @Test
+    public void convertToMap() {
+        List<Student> students = List.of(
+                new Student(10, "Surname1"),
+                new Student(30, "Surname2"),
+                new Student(40, "Surname3"),
+                new Student(60, "Surname3"),
+                new Student(90, "Surname2")
+        );
+        School sc = new School();
+        Map<String, Student> studentsMap = sc.convertToMap(students);
+        Map<String, Student> expected = new HashMap<>();
+        expected.put("Surname1", new Student(10, "Surname1"));
+        expected.put("Surname2", new Student(90, "Surname2"));
+        expected.put("Surname3", new Student(60, "Surname3"));
+        assertThat(studentsMap, is(expected));
     }
 }
