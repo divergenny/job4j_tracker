@@ -42,19 +42,17 @@ public class BankService {
 
     /**
      * Происходит поиск пользвателя по номеру паспорта
-     * через перебор всех элементов цикла foreach и метода Map.keySet.
+     * через использование стримов.
      * @param passport Строковое представление номера паспорта.
      * @return обьект user.
      */
     public User findByPassport(String passport) {
-        User foundUser = null;
-        for (User userKey : users.keySet()) {
-            if (passport.equals(userKey.getPassport())) {
-                foundUser = userKey;
-                break;
-            }
-        }
-        return foundUser;
+        return users.keySet()
+                .stream()
+                .filter(s -> s.getPassport()
+                        .equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -67,16 +65,14 @@ public class BankService {
      */
     public Account findByRequisite(String passport, String requisite) {
         User foundUser = findByPassport(passport);
-        Account foundAccWithRequisite = null;
         if (foundUser != null) {
-            for (Account accsRequisites : users.get(foundUser)) {
-                if (requisite.equals(accsRequisites.getRequisite())) {
-                    foundAccWithRequisite = accsRequisites;
-                    break;
-                }
-            }
+            return users.get(foundUser)
+                    .stream()
+                    .filter(s -> s.getRequisite().equals(requisite))
+                    .findFirst()
+                    .orElse(null);
         }
-        return foundAccWithRequisite;
+        return null;
     }
 
     /**
