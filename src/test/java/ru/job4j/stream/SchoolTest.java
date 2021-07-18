@@ -78,8 +78,8 @@ public class SchoolTest {
         Map<String, Student> studentsMap = sc.convertToMap(students);
         Map<String, Student> expected = new HashMap<>();
         expected.put("Surname1", new Student(10, "Surname1"));
-        expected.put("Surname2", new Student(90, "Surname2"));
-        expected.put("Surname3", new Student(60, "Surname3"));
+        expected.put("Surname2", new Student(30, "Surname2"));
+        expected.put("Surname3", new Student(40, "Surname3"));
         assertThat(studentsMap, is(expected));
     }
 }

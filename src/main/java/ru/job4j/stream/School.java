@@ -20,14 +20,11 @@ public class School {
 
     Map<String, Student> convertToMap(List<Student> students) {
         return students.stream()
-                .distinct()
                 .collect(
                         Collectors.toMap(
                                 e -> e.getSurname(),
                                 e -> e,
-                                (first, second) -> {
-                                    return first.getScore() > second.getScore() ? first : second;
-                                }
+                                (first, second) -> first
                         )
                 );
     }
