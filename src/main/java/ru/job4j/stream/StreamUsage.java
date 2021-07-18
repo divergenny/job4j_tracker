@@ -27,7 +27,7 @@ public class StreamUsage {
         integers.add(-5);
         integers.add(6);
         List<Integer> positiveInt = integers.stream()
-                .filter(number -> number >= 0)
+                .filter(number -> number > 0)
                 .collect(Collectors.toList());
         positiveInt.forEach(System.out::println);
         List<Task> tasks = List.of(
