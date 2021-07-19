@@ -12,18 +12,18 @@ import static org.junit.Assert.*;
 public class OrderConvertTest {
     @Test
     public void whenSingleOrder() {
-        List<Order> orders = new ArrayList<>();
-        orders.add(new Order("3sfe", "Dress"));
+        List<Order> orders = List.of(new Order("3sfe", "Dress"));
         HashMap<String, Order> map = OrderConvert.process(orders);
         assertThat(map.get("3sfe"), is(new Order("3sfe", "Dress")));
     }
 
     @Test
     public void whenDuplicatesInOrder() {
-        List<Order> orders = new ArrayList<>();
-        orders.add(new Order("4s4s", "Trouser"));
-        orders.add(new Order("4s4s", "Trousers"));
-        orders.add(new Order("3sfe", "Dress"));
+        List<Order> orders = List.of(
+                new Order("4s4s", "Trouser"),
+                new Order("4s4s", "Trousers"),
+                new Order("3sfe", "Dress")
+        );
         HashMap<String, Order> map = OrderConvert.process(orders);
         assertThat(map.size(), is(2));
     }
