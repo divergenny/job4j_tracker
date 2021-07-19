@@ -12,6 +12,19 @@ public class Student {
         this.surname = surname;
     }
 
+    public Student(String surname, int score) {
+        this.score = score;
+        this.surname = surname;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public int getScore() {
         return score;
     }
@@ -40,9 +53,9 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "score=" + score +
-                ", surname='" + surname + '\'' +
-                '}';
+        return "Student{"
+                + "score=" + score
+                + ", surname='" + surname + '\''
+                + '}';
     }
 }
