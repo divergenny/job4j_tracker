@@ -1,6 +1,8 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+import ru.job4j.tracker.action.*;
+import ru.job4j.tracker.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,7 @@ public class StartUITest {
     @Test
     public void whenCreateItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
@@ -28,7 +30,7 @@ public class StartUITest {
     @Test
     public void whenReplaceItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new StubInput(
@@ -44,7 +46,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
@@ -59,7 +61,7 @@ public class StartUITest {
     @Test
     public void whenExit() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Input in = new StubInput(
                 new String[] {"0"}
         );
@@ -76,7 +78,7 @@ public class StartUITest {
     @Test
     public void whenFindAllAction() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item sofa = new Item("Sofa");
         tracker.add(sofa);
         Input in = new StubInput(
@@ -101,7 +103,7 @@ public class StartUITest {
     @Test
     public void whenFindItemByNameAction() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item sofa = new Item("Sofa");
         tracker.add(sofa);
         Input in = new StubInput(
@@ -126,7 +128,7 @@ public class StartUITest {
     @Test
     public void whenFindItemByIdAction() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item sofa = new Item("Sofa");
         tracker.add(sofa);
         Input in = new StubInput(
@@ -151,7 +153,7 @@ public class StartUITest {
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<UserAction>();
         actions.add(new ExitAction(out));
         Input in = new StubInput(

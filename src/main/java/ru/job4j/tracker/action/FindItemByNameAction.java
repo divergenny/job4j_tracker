@@ -1,4 +1,9 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
+
+import ru.job4j.tracker.Input;
+import ru.job4j.tracker.Output;
+import ru.job4j.tracker.Store;
+import ru.job4j.tracker.model.Item;
 
 import java.util.List;
 
@@ -15,7 +20,7 @@ public class FindItemByNameAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         out.println("=== Find items by name ====");
         String applicationName = input.askStr("What is name of item do you want to find? "
                 + System.lineSeparator() + "Write name of item: ");

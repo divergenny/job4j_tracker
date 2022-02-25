@@ -1,4 +1,7 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
+
+import ru.job4j.tracker.*;
+import ru.job4j.tracker.model.Item;
 
 public class FindItemByIdAction implements UserAction {
     private final Output out;
@@ -13,7 +16,7 @@ public class FindItemByIdAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         out.println("=== Find item by Id ====");
         int id = Integer.parseInt(input.askStr("Which item do you want to find?"
                 + System.lineSeparator() + "Write ID of item: "));

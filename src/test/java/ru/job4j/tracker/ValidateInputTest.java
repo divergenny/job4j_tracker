@@ -2,6 +2,9 @@ package ru.job4j.tracker;
 
 
 import org.junit.Test;
+import ru.job4j.tracker.action.CreateItemAction;
+import ru.job4j.tracker.action.ExitAction;
+import ru.job4j.tracker.action.UserAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +54,7 @@ public class ValidateInputTest {
     @Test
     public void whenNegativeInput() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Input in = new StubInput(
                 new String[] {"-1", "1"}
         );

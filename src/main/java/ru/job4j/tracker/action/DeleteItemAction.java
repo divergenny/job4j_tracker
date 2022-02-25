@@ -1,4 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
+
+import ru.job4j.tracker.*;
 
 public class DeleteItemAction implements UserAction {
     private final Output out;
@@ -13,7 +15,7 @@ public class DeleteItemAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         out.println("=== Delete item ====");
         int itemToDelete = Integer.parseInt(input.askStr("Which item do you want to delete?"
                 + System.lineSeparator() + "Write ID of item: "));

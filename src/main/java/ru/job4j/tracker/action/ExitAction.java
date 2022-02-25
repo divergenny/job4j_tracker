@@ -1,4 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
+
+import ru.job4j.tracker.*;
 
 public class ExitAction implements UserAction {
     private final Output out;
@@ -13,7 +15,7 @@ public class ExitAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         out.println("=== Have a nice day! :) ===");
         return false;
     }

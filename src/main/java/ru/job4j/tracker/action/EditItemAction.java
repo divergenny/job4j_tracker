@@ -1,4 +1,7 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
+
+import ru.job4j.tracker.*;
+import ru.job4j.tracker.model.Item;
 
 public class EditItemAction implements UserAction {
     private final Output out;
@@ -13,7 +16,7 @@ public class EditItemAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         out.println("=== Edit item ====");
         int numberOfItem = Integer.parseInt(input.askStr("Which Item would you want to Edit?"
                 + System.lineSeparator() + "Your choice: "));
