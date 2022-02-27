@@ -12,6 +12,13 @@ public class SqlTracker implements Store, AutoCloseable {
     private Connection cn;
     private Boolean resultOfQuery = false;
 
+    public SqlTracker() {
+    }
+
+    public SqlTracker(Connection cn) {
+        this.cn = cn;
+    }
+
     @Override
     public void init() {
         try (InputStream in = SqlTracker.class
