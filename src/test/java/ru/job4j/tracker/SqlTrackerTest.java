@@ -82,16 +82,12 @@ public class SqlTrackerTest {
 
     @Test
     public void whenFindAll() {
-        List<Item> rsl = List.of(new Item("Alena"), new Item("Vladimir"), new Item("Petr"));
-        int rslItr = 0;
         SqlTracker tracker = new SqlTracker(connection);
-        tracker.add(new Item("Alena"));
-        tracker.add(new Item("Vladimir"));
-        tracker.add(new Item("Petr"));
-        for (Item item : tracker.findAll()) {
-            assertThat(item.getName(), is(rsl.get(rslItr).getName()));
-            rslItr++;
-        }
+        Item alena = tracker.add(new Item("Alena"));
+        Item vladimir = tracker.add(new Item("Vladimir"));
+        Item petr = tracker.add(new Item("Petr"));
+        List<Item> rsl = List.of(alena, vladimir, petr);
+        assertThat(tracker.findAll(), is(rsl));
     }
 
     @Test
