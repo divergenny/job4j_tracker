@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import ru.job4j.tracker.model.Item;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,7 +22,20 @@ public class SqlTracker implements Store, AutoCloseable {
 
     @Override
     public void init() {
-        try (InputStream in = SqlTracker.class
+        try (InputStream in = new FileInputStream("db/liquibase.properties")) {
+            Properties config = new Properties();
+            config.load(in);
+            Class.forName(config.getProperty("driver-class-name"));
+            cn = DriverManager.getConnection(
+                    config.getProperty("url"),
+                    config.getProperty("username"),
+                    config.getProperty("password")
+            );
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+      /*
+      try (InputStream in = SqlTracker.class
                 .getClassLoader()
                 .getResourceAsStream("app.properties")) {
             Properties config = new Properties();
@@ -35,6 +49,7 @@ public class SqlTracker implements Store, AutoCloseable {
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
+        */
     }
 
     @Override
