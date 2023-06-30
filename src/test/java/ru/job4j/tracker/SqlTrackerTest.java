@@ -15,7 +15,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 
-
 public class SqlTrackerTest {
     private static Connection connection;
 
@@ -28,21 +27,21 @@ public class SqlTrackerTest {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));
-            connection = DriverManager.getConnection(
-                    config.getProperty("url"),
-                    config.getProperty("username"),
-                    config.getProperty("password")
+            connection = DriverManager.getConnection(config.getProperty("url"),
+                    config.getProperty("username"), config.getProperty("password")
 
             );
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
     }
+
     @Ignore
     @AfterClass
     public static void closeConnection() throws SQLException {
         connection.close();
     }
+
     @Ignore
     @After
     public void wipeTable() throws SQLException {
@@ -50,6 +49,7 @@ public class SqlTrackerTest {
             statement.execute();
         }
     }
+
     @Ignore
     @Test
     public void whenSaveItemAndFindByGeneratedIdThenMustBeTheSame() {
@@ -58,6 +58,7 @@ public class SqlTrackerTest {
         tracker.add(item);
         assertThat(tracker.findById(item.getId()), is(item));
     }
+
     @Ignore
     @Test
     public void whenSaveItemAndDeleteThenMustBeNull() {
@@ -67,6 +68,7 @@ public class SqlTrackerTest {
         tracker.delete(item.getId());
         assertThat(tracker.findById(item.getId()), nullValue());
     }
+
     @Ignore
     @Test
     public void whenReplaceItem() {
@@ -78,6 +80,7 @@ public class SqlTrackerTest {
         tracker.replace(item.getId(), replaceItem);
         assertThat(tracker.findById(item.getId()), is(replaceItem));
     }
+
     @Ignore
     @Test
     public void whenFindAll() {
@@ -88,6 +91,7 @@ public class SqlTrackerTest {
         List<Item> rsl = List.of(alena, vladimir, petr);
         assertThat(tracker.findAll(), is(rsl));
     }
+
     @Ignore
     @Test
     public void whenFindByName() {
