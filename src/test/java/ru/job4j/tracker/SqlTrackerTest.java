@@ -1,8 +1,15 @@
 package ru.job4j.tracker;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Ignore;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.model.Item;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,17 +25,16 @@ import static org.hamcrest.Matchers.nullValue;
 public class SqlTrackerTest {
     private static Connection connection;
 
-    @Ignore
-    @BeforeClass
+    @BeforeAll
     public static void initConnection() {
-        try (InputStream in = SqlTrackerTest.class
-                .getClassLoader()
-                .getResourceAsStream("test.properties")) {
+        try (InputStream in = new FileInputStream("db/liquibase_test.properties")) {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));
-            connection = DriverManager.getConnection(config.getProperty("url"),
-                    config.getProperty("username"), config.getProperty("password")
+            connection = DriverManager.getConnection(
+                    config.getProperty("url"),
+                    config.getProperty("username"),
+                    config.getProperty("password")
 
             );
         } catch (Exception e) {
@@ -36,21 +42,18 @@ public class SqlTrackerTest {
         }
     }
 
-    @Ignore
-    @AfterClass
+    @AfterAll
     public static void closeConnection() throws SQLException {
         connection.close();
     }
 
-    @Ignore
-    @After
+    @AfterEach
     public void wipeTable() throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement("delete from items")) {
             statement.execute();
         }
     }
 
-    @Ignore
     @Test
     public void whenSaveItemAndFindByGeneratedIdThenMustBeTheSame() {
         SqlTracker tracker = new SqlTracker(connection);
@@ -59,7 +62,6 @@ public class SqlTrackerTest {
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
-    @Ignore
     @Test
     public void whenSaveItemAndDeleteThenMustBeNull() {
         SqlTracker tracker = new SqlTracker(connection);
@@ -69,7 +71,6 @@ public class SqlTrackerTest {
         assertThat(tracker.findById(item.getId()), nullValue());
     }
 
-    @Ignore
     @Test
     public void whenReplaceItem() {
         SqlTracker tracker = new SqlTracker(connection);
@@ -81,7 +82,6 @@ public class SqlTrackerTest {
         assertThat(tracker.findById(item.getId()), is(replaceItem));
     }
 
-    @Ignore
     @Test
     public void whenFindAll() {
         SqlTracker tracker = new SqlTracker(connection);
@@ -92,7 +92,6 @@ public class SqlTrackerTest {
         assertThat(tracker.findAll(), is(rsl));
     }
 
-    @Ignore
     @Test
     public void whenFindByName() {
         SqlTracker tracker = new SqlTracker(connection);
